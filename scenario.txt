@@ -1,0 +1,54 @@
+1) collect  available tickers data
+
+_ requests
+_ lxml
+_ site:https: //polygon.io/docs/get_v3_reference_tickers_anchor (get tickers)
+
+2) collect all details information from tickers
+
+_ requests
+_ lxml
+_ site: https://polygon.io/docs/get_v1_meta_symbols__stocksTicker__company_anchor (get tickers details)
+
+3) collecting all financial information from tickers 
+
+_ requests
+_ lxml
+_ site: https://polygon.io/docs/get_v2_reference_financials__stocksTicker__anchor (itering financial informations)
+_constraints: we need “trailing twelve months average” on last 3Y
+
+3 bis) Add last 52-weeks from stock price in a second relational table 
+_ requests
+_ lxml
+_site: https://polygon.io/docs/get_v2_aggs_ticker__stocksTicker__range__multiplier___timespan___from___to__anchor
+
+
+4) import data into a csv file (local import)
+
+_outil: fonction utilisé dans le projet précédent: "def _import_features_into_csv()"
+_features asked : [id/ ticker/ name/ market/ locale/ primary_exchange/ active/ currency_name
+composite_figi/ share_class_figi/ last_updated_utc/ bloomberg/ ceo/ cik/ country
+description/ employees/ exchange/ exchange_symbol/ figi/ hq_address/ hq_country/ hq_state
+industry/ lei/ list_date/ logo/ marketcap/ full_name/ phone/ sector/ sic/ similar/ symbol
+tags/ updated/ url/ is_detail/ last_collected_at]
+
+2 tables = ticker and financials
+
+5) import data into a relational sql data base ()
+
+_ sqlalchemy: library that facilitates the communication between Python programs and databases. Will be use to create our database.
+
+6) Data Vizualisation 
+
+_ streamlit : Streamlit turns data scripts into shareable web apps in minutes. All in Python
+
+7) Data Science
+
+_statistics on the retrieving data = deploy models to identify buying opportunities based on burry mantra
+_site for statistics analysis of the data : https://vintagevalueinvesting.com/wp-content
+/uploads/2017/03/Michael-Burry-Investment-Strategy-Vintage-Value-Investing.pdf
+_API : polygon.io = display information on a dash, on a remote server 
+(Financial Market Data Platform Stock APIs, Forex, Crypto) after statisctics analyses we will show outcomes on polygon
+_site for polygon api: https://polygon.io/
+
+
